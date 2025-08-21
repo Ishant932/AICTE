@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICTE-VAANI Conference</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Use a custom Tailwind config to define colors and font
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1a5276',
+                        secondary: '#2c3e50',
+                        accent: '#e74c3c',
+                        light: '#ecf0f1',
+                        dark: '#34495e',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f0f2f5;
+            background-image: linear-gradient(to top, #d2e4f0, #f0f8ff);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .nav-link.active {
+            @apply bg-primary text-white;
+        }
+        .nav-link:hover {
+            @apply bg-gray-200 text-dark;
+        }
+        
+        /* Language toggle logic */
+        #hindi-content {
+            display: none;
+        }
+
+        #language-toggle-checkbox:checked ~ #english-content {
+            display: none;
+        }
+        #language-toggle-checkbox:checked ~ #hindi-content {
+            display: block;
+        }
+        
+        /* Interactive Card and Image effects */
+        .card-glow {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-glow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .interactive-img {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .interactive-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Custom toggle button style */
+        .toggle-button {
+            font-family: 'Inter', sans-serif;
+            background-color: #555555;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px; /* Tailwind's rounded-full */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .toggle-button:hover {
+            background-color: #777777;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="text-dark">
+    <div class="container mx-auto p-4 sm:p-8">
+
+        <div class="flex items-center justify-between p-4 mb-6">
+            <div class="flex items-center space-x-2 md:space-x-0">
+                <img src="./logos/PCE.png" alt="Poornima College of Engineering Logo" class="rounded-xl shadow-sm h-24">
+                <img src="./logos/logo3.png" alt="NAAC A+ Accredited Logo" class="rounded-xl shadow-sm h-24">
+            </div>
+            <div>
+                <img src="./logos/AICTE.png" alt="AICTE Logo" class="rounded-xl shadow-sm h-28">
+            </div>
+            <div>
+                <img src="./logos/ANAND.png" alt="Anand International College of Engineering Logo" class="rounded-xl shadow-sm h-28">
+            </div>
+        </div>
+
+        <nav class="bg-dark text-white p-2 rounded-xl shadow-lg mb-6 sticky top-0 z-50">
+            <ul class="flex justify-center sm:justify-between space-x-2 sm:space-x-4">
+                <li><a href="#home-section" class="nav-link px-4 py-2 rounded-lg transition-colors" data-page="home">Home</a></li>
+                <li><a href="#about-section" class="nav-link px-4 py-2 rounded-lg transition-colors" data-page="about">About</a></li>
+                <li><a href="#committee-section" class="nav-link px-4 py-2 rounded-lg transition-colors" data-page="committee">Committee</a></li>
+                <li><a href="#venue-section" class="nav-link px-4 py-2 rounded-lg transition-colors" data-page="venue">Venue</a></li>
+                <li><a href="#contact-section" class="nav-link px-4 py-2 rounded-lg transition-colors" data-page="contact">Contact</a></li>
+                <li><a href="#links-section" class="nav-link px-4 py-2 rounded-lg transition-colors" data-page="links">Links</a></li>
+            </ul>
+        </nav>
+
+        <header class="bg-white rounded-xl shadow-lg p-6 mb-6 flex flex-col sm:flex-row items-center justify-between card-glow">
+            <div class="text-center sm:text-left flex-grow">
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-primary">AICTE-VAANI Conference</h1>
+                <p class="text-gray-500 mt-1 text-sm sm:text-base">National Conference on Mathematical Biology and Ecology for Sustainable Development</p>
+            </div>
+            <label for="language-toggle-checkbox" class="toggle-button" id="language-toggle">
+                हिन्दी / English
+            </label>
+        </header>
+
+        <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mb-6">
+            <img src="poornima img1.webp" alt="Poornima College of Engineering Building 1" class="rounded-xl shadow-lg h-48 w-full md:w-1/3 object-cover interactive-img">
+            <img src="poorninma img2.webp" alt="Poornima College of Engineering Building 2" class="rounded-xl shadow-lg h-48 w-full md:w-1/3 object-cover interactive-img">
+            <img src="poormnima img3.jpg" alt="Poornima College of Engineering Entrance" class="rounded-xl shadow-lg h-48 w-full md:w-1/3 object-cover interactive-img">
+        </div>
+
+        <input type="checkbox" id="language-toggle-checkbox" class="hidden">
+
+        <div id="english-content" class="language-content">
+            <section id="home-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-xl sm:text-2xl font-bold text-secondary text-center">Sponsored 3-Days Conference</h2>
+                <h3 class="text-lg sm:text-xl font-semibold text-center mt-2">on "National Conference on Mathematical Biology and Ecology for Sustainable Development"</h3>
+                <p class="text-center font-medium mt-4">27th to 29th November, 2025</p>
+                <p class="text-center font-bold text-accent">Offline Mode</p>
+
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <h4 class="text-lg font-semibold text-secondary mb-2">JOINTLY ORGANISED BY</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <p class="font-bold text-primary">Poornima College of Engineering</p>
+                            <p>ISI-6, RIICO Institutional Area, Sitapura, Jaipur-302022, Rajasthan, India</p>
+                            <a href="http://www.poornima.org" class="text-blue-500 hover:underline">www.poornima.org</a>
+                        </li>
+                        <li>
+                            <p class="font-bold text-primary">Anand International College of Engineering</p>
+                            <p>Near Kanota, Agra Road, Jaipur-303012, Rajasthan, India</p>
+                            <a href="http://www.anandice.ac.in" class="text-blue-500 hover:underline">www.anandice.ac.in</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            
+            <hr class="my-8 border-gray-300">
+
+            <section id="about-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">ABOUT</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">POORNIMA COLLEGE OF ENGINEERING, JAIPUR</h3>
+                        <p>Poornima College of Engineering is the flagship institute of Poornima Group established in 2000 to impart practical technical education. In its glorious journey of 25 years, PCE has set benchmarks and reached new heights in engineering education with dedication, perseverance and commitment. PCE is accredited with the prestigious A+ grade by the National Assessment and Accreditation Council (NAAC).</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">ANAND INTERNATIONAL COLLEGE OF ENGINEERING, JAIPUR</h3>
+                        <p>Anand International College of Engineering, approved by AICTE and affiliated to RTU, Kota was established at Jaipur in year 2010. The institute nurtures an intellectually inspiring Academic Environment at a lush-green landscaped campus with state-of-the-art infrastructure.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">ABOUT VANNI PROGRAM</h3>
+                        <p>To promote high standards in technical education in Indian languages by providing opportunities to academicians and working professionals by providing a platform to share their knowledge, experience, innovations and inventions in 16 emerging areas. To create knowledge base by organizing a conference/seminar/workshop in the above mentioned areas in 22 Indian languages.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">ABOUT CONFERENCE</h3>
+                        <p>Poornima College of Engineering, Jaipur is pleased to welcome you to the International Conference on Mathematical Biology and Ecology for Sustainable Development (ICMBESD-25) to be held on 3-4 October 2025. This conference is being organized under the AICTE-VANI scheme, which aims to provide financial assistance to AICTE-approved institutions for organizing events in emerging technical areas in 22 regional languages.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-8 border-gray-300">
+
+            <section id="committee-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">ORGANIZING COMMITTEE</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">PATRONS</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Ar. Rahul Singhi, Director, Poornima Group, Jaipur, India</li>
+                            <li>Dr. Mahesh Bundele, Principal & Director, PCE, Jaipur, India</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">PROGRAM CHAIRS</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Dr. Pankaj Dhemla, Professor & Vice Principal, PCE, Jaipur, India</li>
+                            <li>Dr. Gautam Singh, Registrar, Poornima College of Engineering, Jaipur, India</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">COORDINATOR</h3>
+                        <p>Dr.Shilpi Jain, Professor, PCE, Jaipur, India</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">CO-COORDINATOR</h3>
+                        <p>Dr. Praveen Agarwal, Professor, Anand-ICE, Jaipur, India</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">ORGANIZING COMMITTEE</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Dr. Nikita Jain, CSE, PCE, Jaipur</li>
+                            <li>Mr. Shubham Patel, CSE, PCE, Jaipur</li>
+                            <li>Mr. Rohit Chhabra, CSE, PCE, Jaipur</li>
+                            <li>Dr. Amol Saxena, Head-ADC, PCE, Jaipur</li>
+                            <li>Dr. Gajendra S. Rajawat , Head-IT, PCE, Jaipur</li>
+                            <li>Mr. Manish Dubey, CSE ,PCE, Jaipur</li>
+                            <li>Dr. Brijraj S. Solanki, CSE, PCE, Jaipur</li>
+                            <li>Dr. Keshav Dev Gupta, ADC, PCE, Jaipur</li>
+                            <li>Ms. Anu Arora, DHAS, PCE, Jaipur</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">WEB DEVELOPERS</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>Mr. Ishant Goyal, Student CSE, PCE, Jaipur</li>
+                            <li>Mr. Gaurav Sharma, Student CSE, PCE, Jaipur</li>
+                            <li>Mr. Kritik Sethi, Student CSE, PCE, Jaipur</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-8 border-gray-300">
+
+            <section id="venue-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">VENUE</h2>
+                <div class="space-y-2">
+                    <p class="font-semibold">Poornima College of Engineering</p>
+                    <p>ISI-6, RIICO Institutional Area, Sitapura</p>
+                    <p>Jaipur-302022, Rajasthan, India</p>
+                    <a href="http://www.poornima.org" class="text-blue-500 hover:underline">www.poornima.org</a>
+                </div>
+            </section>
+            
+            <hr class="my-8 border-gray-300">
+
+            <section id="contact-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">CONTACT</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary">Dr.Shilpi Jain (COORDINATOR)</h3>
+                        <p>Professor, PCE, Jaipur, India</p>
+                        <p>Email: <a href="mailto:shilpi.jain@poornima.org" class="text-blue-500 hover:underline">shilpi.jain@poornima.org</a></p>
+                        <p>Mobile: +91-9928279174</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary">Dr. Praveen Agarwal (CO-COORDINATOR)</h3>
+                        <p>Professor, Anand-ICE, Jaipur, India</p>
+                        <p>Email: <a href="mailto:praveen.agarwal@anandice.ac.in" class="text-blue-500 hover:underline">praveen.agarwal@anandice.ac.in</a></p>
+                        <p>Mobile: +91-8387894656</p>
+                    </div>
+                </div>
+            </section>
+            
+            <hr class="my-8 border-gray-300">
+
+            <section id="links-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">QUICK LINKS</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><a href="#" class="text-blue-500 hover:underline">Conference Brochure</a></li>
+                    <li><a href="#" class="text-blue-500 hover:underline">Conference Schedule</a></li>
+                    <li><a href="#" class="text-blue-500 hover:underline">AICTE Approval Letter</a></li>
+                    <li><a href="#" class="text-blue-500 hover:underline">VAANI Scheme Document</a></li>
+                </ul>
+                <div class="mt-8 text-sm text-gray-500">
+                    <p>Note: Content for Schedule, Speakers, Call for Papers, Publication, Registration, Paper Submission and Accommodation will be announced soon.</p>
+                </div>
+            </section>
+        </div>
+
+        <div id="hindi-content" class="language-content">
+            <section id="home-hi-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-xl sm:text-2xl font-bold text-secondary text-center">प्रायोजित 3- दिवसीय सम्मेलन</h2>
+                <h3 class="text-lg sm:text-xl font-semibold text-center mt-2">"सतत विकास के लिए गणितीय जीव विज्ञान और पारिस्थितिकी पर राष्ट्रीय सम्मेलन"</h3>
+                <p class="text-center font-medium mt-4">27 से 29 नवंबर, 2025</p>
+                <p class="text-center font-bold text-accent">ऑफ़लाइन मोड</p>
+
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <h4 class="text-lg font-semibold text-secondary mb-2">संयुक्त रूप से आयोजित</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <p class="font-bold text-primary">पूर्णिमा इंजीनियरिंग कॉलेज</p>
+                            <p>आईएसआई-6, रीको इंस्टीट्यूशनल एरिया, सीतापुरा, जयपुर-302022, राजस्थान, भारत</p>
+                            <a href="http://www.poornima.org" class="text-blue-500 hover:underline">www.poornima.org</a>
+                        </li>
+                        <li>
+                            <p class="font-bold text-primary">आनंद इंटरनेशनल कॉलेज ऑफ इंजीनियरिंग</p>
+                            <p>कनोता के पास, आगरा रोड, जयपुर-303012, राजस्थान, भारत</p>
+                            <a href="http://www.anandice.ac.in" class="text-blue-500 hover:underline">www.anandice.ac.in</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <hr class="my-8 border-gray-300">
+
+            <section id="about-hi-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">के बारे में</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">पूर्णिमा कॉलेज ऑफ इंजीनियरिंग, जयपुर</h3>
+                        <p>पूर्णिमा कॉलेज ऑफ इंजीनियरिंग, पूर्णिमा ग्रुप का अग्रणी संस्थान है जिसकी स्थापना 2000 में व्यावहारिक तकनीकी शिक्षा प्रदान करने के लिए की गई थी। 25 वर्षों की अपनी शानदार यात्रा में, PCE ने इंजीनियरिंग शिक्षा में मानक स्थापित किए हैं और नए शिखर पर पहुँचे हैं। पीसीई को राष्ट्रीय मूल्यांकन और प्रत्यायन परिषद (NAAC) द्वारा प्रतिष्ठित A+ ग्रेड से मान्यता प्राप्त है।</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">आनंद इंटरनेशनल कॉलेज ऑफ इंजीनियरिंग, जयपुर</h3>
+                        <p>एआईसीटीई द्वारा अनुमोदित और आरटीयू, कोटा से संबद्ध आनंद इंटरनेशनल कॉलेज ऑफ इंजीनियरिंग की स्थापना वर्ष 2010 में जयपुर में हुई थी। संस्थान अत्याधुनिक बुनियादी ढांचे के साथ हरे-भरे परिसर में बौद्धिक रूप से प्रेरक शैक्षणिक वातावरण का पोषण करता है।</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">वाणी कार्यक्रम के बारे में</h3>
+                        <p>16 उभरते क्षेत्रों में अपने ज्ञान, अनुभव, नवाचारों और आविष्कारों को साझा करने के लिए एक मंच प्रदान करके शिक्षाविदों और कार्यरत पेशेवरों को अवसर प्रदान करके भारतीय भाषाओं में तकनीकी शिक्षा में उच्च मानकों को बढ़ावा देना। 22 भारतीय भाषाओं में उपर्युक्त क्षेत्रों में एक सम्मेलन / संगोष्ठी / कार्यशाला आयोजित करके ज्ञान का आधार तैयार करना।</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">सम्मेलन के बारे में</h3>
+                        <p>पूर्णिमा कॉलेज ऑफ इंजीनियरिंग, जयपुर 3-4 अक्टूबर 2025 को जयपुर, भारत में आयोजित होने वाले सतत विकास के लिए गणितीय जीव विज्ञान और पारिस्थितिकी पर अंतर्राष्ट्रीय सम्मेलन (ICMBESD-25) में आपका स्वागत करते हुए प्रसन्न है। यह सम्मेलन एआईसीटीई-वाणी योजना के तहत आयोजित किया जा रहा है, जिसका उद्देश्य 22 क्षेत्रीय भाषाओं में उभरते तकनीकी क्षेत्रों में सम्मेलन, सेमिनार और कार्यशालाओं जैसे आयोजनों के लिए एआईसीटीई-अनुमोदित संस्थानों को वित्तीय सहायता प्रदान करना है।</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-8 border-gray-300">
+
+            <section id="committee-hi-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">सम्मेलन समितियां</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">संरक्षक</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>श्री राहुल सिंघी, निदेशक, पूर्णिमा ग्रुप, जयपुर, भारत</li>
+                            <li>डॉ. महेश बुंदेले, प्रिंसिपल एवं निदेशक, पीसीई, जयपुर, भारत</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">कार्यक्रम अध्यक्ष</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>डॉ. पंकज ढेमला, प्रोफेसर एवं वाइस प्रिंसिपल, पीसीई, जयपुर, भारत</li>
+                            <li>डॉ. गौतम सिंह, रजिस्ट्रार, पूर्णिमा कॉलेज ऑफ इंजीनियरिंग, जयपुर, भारत</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">समन्वयक</h3>
+                        <p>डॉ. शिल्पी जैन, प्रोफेसर, पीसीई, जयपुर, भारत</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">सह समन्वयक</h3>
+                        <p>डॉ. प्रवीण अग्रवाल, प्रोफेसर, आनंद-आईसीई, जयपुर, भारत</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">सपोर्टिंग समिति</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>डॉ. निकिता जैन, सीएसई, पीसीई, जयपुर </li>
+                            <li>श्री शुभम पटेल, सीएसई, पीसीई, जयपुर</li>
+                            <li>श्री रोहित छाबड़ा, सीएसई, पीसीई, जयपुर</li>
+                            <li>डॉ. अमोल सक्सेना, प्रमुख-एडीसी, पीसीई, जयपुर</li>
+                            <li>डॉ. गजेंद्र एस. राजावत, प्रमुख-आईटी, पीसीई, जयपुर</li>
+                            <li>श्री मनीष दुबे, सीएसई, पीसीई, जयपुर</li>
+                            <li>डॉ. ब्रिजराज एस. सोलंकी, सीएसई, पीसीई, जयपुर</li>
+                            <li>डॉ. केशव देव गुप्ता, एडीसी, , पीसीई, जयपुर</li>
+                            <li>सुश्री अनु अरोड़ा, डीएचएएस, पीसीई, जयपुर</li>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-primary mb-2">वेब डेवलपर्स</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                            <li>श्री इशांत गोयल, छात्र सीएसई, पीसीई, जयपुर</li>
+                            <li>श्री गौरव शर्मा, छात्र सीएसई, पीसीई, जयपुर</li>
+                            <li>श्री कृतिक सेठी, छात्रसीएसई, पीसीई, जयपुर</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-8 border-gray-300">
+
+            <section id="venue-hi-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">कार्यक्रम का स्थान</h2>
+                <div class="space-y-2">
+                    <p class="font-semibold">पूर्णिमा इंजीनियरिंग कॉलेज</p>
+                    <p>आईएसआई-6, रीको इंस्टीट्यूशनल एरिया, सीतापुरा</p>
+                    <p>जयपुर-302022, राजस्थान, भारत</p>
+                    <a href="http://www.poornima.org" class="text-blue-500 hover:underline">www.poornima.org</a>
+                </div>
+            </section>
+
+            <hr class="my-8 border-gray-300">
+            
+            <section id="contact-hi-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">संपर्क</h2>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary">डॉ. शिल्पी जैन (समन्वयक)</h3>
+                        <p>प्रोफ़ेसर, पीसीई, जयपुर, भारत</p>
+                        <p>ईमेल: <a href="mailto:shilpi.jain@poornima.org" class="text-blue-500 hover:underline">shilpi.jain@poornima.org</a></p>
+                        <p>मोबाइल: +91-9928279174</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-primary mb-2">डॉ. प्रवीण अग्रवाल (सह-समन्वयक)</h3>
+                        <p>प्रोफ़ेसर, आनंद-आईसीई, जयपुर, भारत</p>
+                        <p>ईमेल: <a href="mailto:praveen.agarwal@anandice.ac.in" class="text-blue-500 hover:underline">praveen.agarwal@anandice.ac.in</a></p>
+                        <p>मोबाइल: +91-8387894656</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-8 border-gray-300">
+
+            <section id="links-hi-section" class="bg-white rounded-xl shadow-lg p-6 mb-6 scroll-mt-24 card-glow">
+                <h2 class="text-2xl font-bold text-secondary mb-4">त्वरित सम्पक</h2>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><a href="#" class="text-blue-500 hover:underline">सम्मेलन विवरणिका -Conference Brochure</a></li>
+                    <li><a href="#" class="text-blue-500 hover:underline">सम्मेलन अनुसूची -Conference Schedule</a></li>
+                    <li><a href="#" class="text-blue-500 hover:underline">एआईसीटीई अनुमोदन पत्र -AICTE Approval Letter</a></li>
+                    <li><a href="#" class="text-blue-500 hover:underline">वाणी योजना दस्तावेज़ -VAANI Scheme Document</a></li>
+                </ul>
+                <div class="mt-8 text-sm text-gray-500">
+                    <p>नोट: अनुसूची, वक्ता, कॉल फ़ॉर पेपर्स, प्रकाशन, पंजीकरण, पेपर प्रस्तुतीकरण और आवास के लिए सामग्री जल्द ही घोषित की जाएगी।</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const languageToggleCheckbox = document.getElementById('language-toggle-checkbox');
+            
+            // Function to handle tab clicks and scrolling
+            const handleTabClick = (e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                
+                const pageId = e.currentTarget.dataset.page;
+                const language = languageToggleCheckbox.checked ? 'hi' : 'en';
+                const targetSectionId = language === 'hi' ? `${pageId}-hi-section` : `${pageId}-section`;
+                const targetSection = document.getElementById(targetSectionId);
+                
+                if (targetSection) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    e.currentTarget.classList.add('active');
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+            
+            // Function to handle language toggle
+            const handleLanguageToggle = (e) => {
+                const isHindi = e.target.checked;
+                
+                const englishContent = document.getElementById('english-content');
+                const hindiContent = document.getElementById('hindi-content');
+
+                if (isHindi) {
+                    englishContent.style.display = 'none';
+                    hindiContent.style.display = 'block';
+                } else {
+                    englishContent.style.display = 'block';
+                    hindiContent.style.display = 'none';
+                }
+
+                // Reset active link and scroll to home when changing language
+                navLinks.forEach(link => link.classList.remove('active'));
+                const homeLink = document.querySelector('.nav-link[data-page="home"]');
+                if (homeLink) {
+                    homeLink.classList.add('active');
+                }
+                const homeSection = isHindi ? document.getElementById('home-hi-section') : document.getElementById('home-section');
+                if (homeSection) {
+                    homeSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            // Set initial state on page load
+            const initialLanguage = languageToggleCheckbox.checked ? 'hi' : 'en';
+            if (initialLanguage === 'hi') {
+                document.getElementById('english-content').style.display = 'none';
+                document.getElementById('hindi-content').style.display = 'block';
+            }
+            const initialHomeLink = document.querySelector('.nav-link[data-page="home"]');
+            if (initialHomeLink) {
+                initialHomeLink.classList.add('active');
+            }
+            
+            // Event listeners
+            navLinks.forEach(link => {
+                link.addEventListener('click', handleTabClick);
+            });
+            languageToggleCheckbox.addEventListener('change', handleLanguageToggle);
+        });
+    </script>
+</body>
+</html>
